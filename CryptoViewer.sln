@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.Domain", "Src\Core\CryptoViewer.Domain\CryptoViewer.Domain.csproj", "{A5FE9A2F-524F-4645-9D71-CBA48F04B977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.Application", "Src\Core\CryptoViewer.Application\CryptoViewer.Application.csproj", "{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.Application.UnitTests", "Tests\CryptoViewer.Application.UnitTests\CryptoViewer.Application.UnitTests.csproj", "{EF46CF55-1852-44C3-B116-9C1B34C19A9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5FE9A2F-524F-4645-9D71-CBA48F04B977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FE9A2F-524F-4645-9D71-CBA48F04B977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FE9A2F-524F-4645-9D71-CBA48F04B977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FE9A2F-524F-4645-9D71-CBA48F04B977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF46CF55-1852-44C3-B116-9C1B34C19A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF46CF55-1852-44C3-B116-9C1B34C19A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF46CF55-1852-44C3-B116-9C1B34C19A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF46CF55-1852-44C3-B116-9C1B34C19A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{A5FE9A2F-524F-4645-9D71-CBA48F04B977} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BAB6F52D-ADA8-48B0-9438-2B6863AF2EDA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EF46CF55-1852-44C3-B116-9C1B34C19A9E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0CFDB9E-F745-4EDD-B274-5DD6043C92BC}
+	EndGlobalSection
+EndGlobal
