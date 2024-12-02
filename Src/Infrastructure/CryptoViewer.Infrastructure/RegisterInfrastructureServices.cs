@@ -1,5 +1,4 @@
-﻿using CryptoViewer.Application;
-using CryptoViewer.Application.Contracts;
+﻿using CryptoViewer.Application.Contracts;
 using CryptoViewer.Infrastructure.Configuration;
 using CryptoViewer.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
@@ -11,9 +10,12 @@ public static class RegisterInfrastructureServices
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<ExchangeServiceSettings>(configuration.GetSection("ExchangeServiceSettings"));
-        services.AddHttpClient<IExchangeService, ExchangeRatesApiHttpClient>("exchangeRatesApi", cfg => { 
-            // set base address
+        services.AddOptions<ExchangeServiceSettings>()
+            .BindConfiguration("ExchangeServiceSettings")
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
+        services.AddHttpClient<IExchangeService, ExchangeRatesApiHttpClient>(cfg => {
+            cfg.BaseAddress = new Uri(configuration.GetValue<string>("ExchangeServiceSettings:BaseUrl"));
         });                
         return services;
     }

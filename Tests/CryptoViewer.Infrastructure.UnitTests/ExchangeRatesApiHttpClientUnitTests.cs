@@ -21,11 +21,10 @@ public class ExchangeRatesApiHttpClientUnitTests
         _loggerMock = new Mock<ILogger<ExchangeRatesApiHttpClient>>();
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
         _httpClient = new HttpClient(_httpMessageHandlerMock.Object);
-        _httpClient.BaseAddress = new Uri("http://nonexisting.domain");
-        _httpFactoryMock = new Mock<IHttpClientFactory>();
-        _httpFactoryMock.Setup(_ => _.CreateClient(It.IsAny<string>())).Returns(_httpClient);
+        _httpClient.BaseAddress = new Uri("http://nonexisting.domain");        
     }
 
+    
     [Fact]
     public async Task GivenValidInput_WhenCallingGetCurrencyQuotes_ThenSuccessfulResponseWithListOfQuotes()
     {
@@ -42,7 +41,7 @@ public class ExchangeRatesApiHttpClientUnitTests
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(testContent)
             });                              
-        var apiClient = new ExchangeRatesApiHttpClient(_httpFactoryMock.Object, _loggerMock.Object, Options.Create<ExchangeServiceSettings>(settings));
+        var apiClient = new ExchangeRatesApiHttpClient(_httpClient, _loggerMock.Object, Options.Create<ExchangeServiceSettings>(settings));
         var response =  await apiClient.GetCurrencyQuotes("BTC", CancellationToken.None);
         response.Should().NotBeEmpty();
         response.Should().HaveCount(5);
@@ -64,7 +63,7 @@ public class ExchangeRatesApiHttpClientUnitTests
                 StatusCode = HttpStatusCode.BadRequest,
                 Content = new StringContent(testContent)
             });
-        var apiClient = new ExchangeRatesApiHttpClient(_httpFactoryMock.Object, _loggerMock.Object, Options.Create<ExchangeServiceSettings>(settings));
+        var apiClient = new ExchangeRatesApiHttpClient(_httpClient, _loggerMock.Object, Options.Create<ExchangeServiceSettings>(settings));
         var response = await apiClient.GetCurrencyQuotes("BTC", CancellationToken.None);
         _loggerMock.Verify(l =>
             l.Log(LogLevel.Error,
@@ -74,6 +73,5 @@ public class ExchangeRatesApiHttpClientUnitTests
                 It.IsAny<Func<It.IsAnyType, Exception, string>>()
             ), Times.Once);
         response.Should().BeEmpty();        
-    }
-
+    }    
 }
