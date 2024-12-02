@@ -21,6 +21,9 @@ namespace CryptoViewer.API.Controllers
         // left it as alpha so I can hit the validation in the application layer
         [HttpGet("{currencyCode:alpha}/quotes", Name = "GetCurrencyQuotes")]
         [ProducesResponseType(typeof(GetCurrencyQuotesResponse), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 400)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
         public async Task<IActionResult> Get(string currencyCode)
         {
             _logger.LogInformation("Trying to get the quotes for CurrencyCode: {CurrencyCode}", currencyCode);

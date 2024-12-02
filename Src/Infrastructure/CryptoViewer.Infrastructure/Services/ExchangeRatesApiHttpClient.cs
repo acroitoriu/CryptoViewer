@@ -1,6 +1,7 @@
 ﻿using CryptoViewer.Application.Contracts;
 using CryptoViewer.Domain.Entities;
 using CryptoViewer.Infrastructure.Configuration;
+using CryptoViewer.Infrastructure.Exceptions;
 using CryptoViewer.Infrastructure.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -22,16 +23,26 @@ public class ExchangeRatesApiHttpClient : IExchangeService
 
     public async Task<List<Quote>> GetCurrencyQuotes(string currency, CancellationToken cancellationToken)
     {
-        var httpResponse = await _httpClient.GetAsync($"/latest?base={currency}&access_key={_exchangeServiceSettings.AccessKey}", cancellationToken);
+        var httpResponse = await _httpClient.GetAsync($"/latest?base={currency}&symbols={string.Join(',', _exchangeServiceSettings.QuotesToFetch)}&access_key={_exchangeServiceSettings.AccessKey}", cancellationToken);
         if(!httpResponse.IsSuccessStatusCode)
         {
-            // error handling
-            _logger.LogError("The call to get the latest rates failed. Status Code: {StatusCode}, Reason: {Reason}", httpResponse.StatusCode.ToString(), httpResponse.ReasonPhrase);            
-            return new List<Quote>(); // see what exactly to do
+            var errorContentJson = await httpResponse.Content.ReadAsStringAsync();
+            var errorResponse = JsonSerializer.Deserialize<ExchangeRatesApi.ErrorResponse>(errorContentJson);                        
+            _logger.LogError("The HTTP call to get the latest rates failed. Status Code: {StatusCode}, Reason: {Reason}", httpResponse.StatusCode.ToString(), httpResponse.ReasonPhrase);            
+            throw new ExchangeRatesApiException(httpResponse.StatusCode, errorContentJson);
         }
 
         var contentJson = await httpResponse.Content.ReadAsStringAsync(cancellationToken);
         var quotes = JsonSerializer.Deserialize<ExchangeRatesApi.LatestResponse>(contentJson);
-        return quotes.Rates.Select(x => new Quote(currencyCode: x.Key, rate: x.Value)).ToList();
+        if (!quotes.Success)
+        {
+            _logger.LogError("The HTTP call returned 200 OK, but Success flag is false.");
+            throw new ExchangeRatesApiException(System.Net.HttpStatusCode.BadRequest, JsonSerializer.Serialize(quotes.Error));
+        }
+
+        return quotes.Rates                
+                .Select(x => new Quote(currencyCode: x.Key, rate: x.Value))
+                .ToList();
+
     }
 }

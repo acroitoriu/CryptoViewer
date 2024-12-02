@@ -29,7 +29,7 @@ public class GetCurrencyQuotesQueryHandlerUnitTests
     public async Task InvalidCurrencyCode_QueryHandler_ThrowsValidationException(string currencyCode)
     {
         var query = new GetCurrencyQuotesQuery { CurrencyCode = currencyCode };
-        await _handler.Awaiting(x => x.Handle(query, CancellationToken.None)).Should().ThrowAsync<ValidationException>();                
+        await _handler.Awaiting(x => x.Handle(query, CancellationToken.None)).Should().ThrowAsync<ValidationException>();
     }
 
     [Fact]

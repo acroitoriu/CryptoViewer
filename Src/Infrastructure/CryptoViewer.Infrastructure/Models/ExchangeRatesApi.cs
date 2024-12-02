@@ -18,6 +18,18 @@ public class ExchangeRatesApi
         public DateOnly Date { get; set; }
         [JsonPropertyName("rates")]
         public Dictionary<string, decimal> Rates { get; set; }
+        [JsonPropertyName("error")]
+        public LatestResponseError Error { get; set; }
+    }
+
+    public class LatestResponseError
+    {
+        [JsonPropertyName("code")]
+        public int Code { get; set; }        
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
+        [JsonPropertyName("info")]
+        public string Info { get; set; }
     }
 
     public class ErrorResponse
@@ -28,10 +40,12 @@ public class ExchangeRatesApi
 
     public class Error
     {
-        [JsonPropertyName("code")]
+        [JsonPropertyName("code")]        
         public string Code {  get; set; }
         [JsonPropertyName("message")]
         public string Message { get; set; }
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }
 

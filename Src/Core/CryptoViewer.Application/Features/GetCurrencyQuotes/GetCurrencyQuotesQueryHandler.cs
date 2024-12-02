@@ -7,7 +7,7 @@ namespace CryptoViewer.Application.Features.GetCurrencyQuotes;
 public class GetCurrencyQuotesQueryHandler : IRequestHandler<GetCurrencyQuotesQuery, GetCurrencyQuotesResponse>
 {
     private readonly IValidator<GetCurrencyQuotesQuery> _validator;
-    private readonly IExchangeService _exchangeService;
+    private readonly IExchangeService _exchangeService;    
 
     public GetCurrencyQuotesQueryHandler(IValidator<GetCurrencyQuotesQuery> validator, IExchangeService exchangeService)
     {

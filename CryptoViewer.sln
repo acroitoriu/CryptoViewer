@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.API", "Src\API\CryptoViewer.API\CryptoViewer.API.csproj", "{84BEA36A-6A7A-47DD-B906-9FF811741AF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoViewer.IntegrationTests", "Tests\CryptoViewer.IntegrationTests\CryptoViewer.IntegrationTests.csproj", "{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{84BEA36A-6A7A-47DD-B906-9FF811741AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84BEA36A-6A7A-47DD-B906-9FF811741AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84BEA36A-6A7A-47DD-B906-9FF811741AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{C3D0AD4F-FB00-4238-8E0C-8A3BFDB30BC8} = {15475AF3-2716-4BDF-8352-4C7DAC3F1F0C}
 		{AFDB0056-12D2-4B32-AC4B-12B7E67AE1E3} = {E19E1EE9-6CB7-46AA-BAFD-A6F55AA934D5}
 		{84BEA36A-6A7A-47DD-B906-9FF811741AF8} = {782F6F5A-944D-4855-9FE7-95DCC6FEB293}
+		{79C2FC57-AFD0-4902-B6B7-E5A57B96CAAE} = {E19E1EE9-6CB7-46AA-BAFD-A6F55AA934D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0CFDB9E-F745-4EDD-B274-5DD6043C92BC}

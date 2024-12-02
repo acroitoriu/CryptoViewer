@@ -1,6 +1,6 @@
 @CryptoViewer.API_HostAddress = http://localhost:5156
 
-GET {{CryptoViewer.API_HostAddress}}/currency/EUR/quotes
+GET {{CryptoViewer.API_HostAddress}}/currency/TST/quotes
 Accept: application/json
 
 ###
