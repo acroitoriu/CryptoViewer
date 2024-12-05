@@ -14,7 +14,7 @@ The `CryptoViewer.Application` and the `CryptoViewer.Infrastructure` projects ar
 The possible validation errors (from the Application project) or HttpClient implementation errors are being converted
 to appropriate HTTP Status Codes using the IExceptionHandler middleware. The error details are using the `ProblemDetails` format. 
 
-In order to call successfully the ExchangeRatesAPI, the `CryptoViewer.API` project defines a `ExchangeServiceSettings` configuration section in the `appsettings.Development.json` file.
+In order to successfully call the [ExchangeRatesAPI](https://exchangeratesapi.io/), the `CryptoViewer.API` project defines a `ExchangeServiceSettings` configuration section in the `appsettings.Development.json` file.
 Since the Access Key for the ExchangeRatesAPI is a secret, I've set this configuration in my local [user secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-9.0&tabs=windows) using the `ExchangeServiceSettings:AccessKey` key.
 
 Since all projects in the solution use .NET 9, the API project no longer uses Swagger. If interested in the OpenAPI document generated, go to `/openapi/v1.json` path once running the API project.
